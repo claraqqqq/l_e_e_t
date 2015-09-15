@@ -5,12 +5,14 @@
 class Solution:
     # @return an integer
     def romanToInt(self, s):
-        numerals_dict = { "M": 1000, "D": 500, "C": 100, "L": 50, "X": 10, "V": 5, "I": 1 }
-        sum = 0
-        numeral_prev = None
+        dic = {"M":1000, "D":500, "C":100, "L":50, "X":10, "V":5, "I":1}
+        res = 0
+        prev = None
+        
         for key in s:
-            if numeral_prev != None and numeral_prev < numerals_dict[key]:
-                sum -= 2*numeral_prev
-            sum += numerals_dict[key]
-            numeral_prev = numerals_dict[key]
-        return sum
+            if prev!=None and prev<dic[key]:
+                res -= 2*prev
+            res += dic[key]
+            prev = dic[key]
+        
+        return res

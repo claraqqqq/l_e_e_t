@@ -19,7 +19,7 @@ class Solution:
         for idx in range(1, length):
             if A[idx] == A[idx - 1]:
                 same_cnt += 1
-                if same_cnt <= 2:
+                if same_cnt == 2:
                     idx_update += 1
                     A[idx_update] = A[idx]
             else:

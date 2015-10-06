@@ -18,5 +18,5 @@ class Solution:
 				low = mid
 			elif mid ** 2 > x:
 				high = mid
-				mid = int((high + low) / 2)
+			mid = int((high + low) / 2)
 		return mid

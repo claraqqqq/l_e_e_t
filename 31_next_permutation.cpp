@@ -25,27 +25,27 @@ public:
 
         int partition = -1;
         for(int idx=0; idx<nums.size()-1; idx++){
-			       if(nums[idx]<nums[idx+1]){
-				           partition = idx;
-			      }
-		    }
+			if(nums[idx]<nums[idx+1]){
+				partition = idx;
+			}
+		}
 
-		    if(partition == -1){
-			       sort(nums.begin(), nums.end());
-			      return;
-		    }
+		if(partition == -1){
+			sort(nums.begin(), nums.end());
+			return;
+		}
 
-		    int label;
-		    for(int idx=partition+1; idx<nums.size(); idx++){
-			       if(nums[idx]>nums[partition]){
-				           label = idx;
-			       }
-		    }
+		int label;
+		for(int idx=partition+1; idx<nums.size(); idx++){
+			if(nums[idx]>nums[partition]){
+				label = idx;
+			}
+		}
 
-		    int tmp = nums[label];
-		    nums[label] = nums[partition];
-		    nums[partition] = tmp;
+		int tmp = nums[label];
+		nums[label] = nums[partition];
+		nums[partition] = tmp;
 
-		    reverse(nums.begin()+partition+1, nums.end());
+		reverse(nums.begin()+partition+1, nums.end());
     }
 };

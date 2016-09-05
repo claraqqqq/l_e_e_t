@@ -29,33 +29,32 @@ public:
         int total_num = m + n;
 
         if (total_num & 0x1)
-        	return find_median(nums1.begin(), m, nums2.begin(), n, total_num/2+1);
+            return find_median(nums1.begin(), m, nums2.begin(), n, total_num/2+1);
         else{
-        	int tmp1 = find_median(nums1.begin(), m, nums2.begin(), n, total_num/2);
-        	int tmp2 = find_median(nums1.begin(), m, nums2.begin(), n, total_num/2+1);
-        	return (tmp1+tmp2) / 2.0;
+            int tmp1 = find_median(nums1.begin(), m, nums2.begin(), n, total_num/2);
+            int tmp2 = find_median(nums1.begin(), m, nums2.begin(), n, total_num/2+1);
+            return (tmp1+tmp2) / 2.0;
         }
-        
     }
 
 private:
-	static int find_median(std::vector<int>::const_iterator nums1, int m, std::vector<int>::const_iterator nums2, int n, int median_th){
+	  static int find_median(std::vector<int>::const_iterator nums1, int m, std::vector<int>::const_iterator nums2, int n, int median_th){
 
-		if (m > n) 
-			return find_median(nums2, n, nums1, m, median_th);
+		if (m > n)
+		    return find_median(nums2, n, nums1, m, median_th);
 		if (m == 0)
-			return *(nums2 + median_th - 1);
+		    return *(nums2 + median_th - 1);
 		if (median_th == 1)
-			return min(*nums1, *nums2);
+		    return min(*nums1, *nums2);
 
 		int m1 = min(median_th/2, m);
 		int n1 = median_th - m1;
 
 		if (*(nums1+m1-1) < *(nums2+n1-1))
-			return find_median(nums1+m1, m-m1, nums2, n, median_th-m1);
+		    return find_median(nums1+m1, m-m1, nums2, n, median_th-m1);
 		else if (*(nums1+m1-1) > *(nums2+n1-1))
-			return find_median(nums1, m, nums2+n1, n-n1, median_th-n1);
+		    return find_median(nums1, m, nums2+n1, n-n1, median_th-n1);
 		else
-			return nums1[m1-1];
-	}
+		    return nums1[m1-1];
+    }
 };

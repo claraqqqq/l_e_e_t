@@ -17,47 +17,47 @@ A solution set is:
 class Solution {
 public:
     vector<vector<int>> threeSum(vector<int>& nums) {
-        
+
         vector<vector<int>> res;
-        
+
         // nums not valid
         if (nums.size() < 3) return res;
 
-		sort(nums.begin(), nums.end());
-		const int target = 0;
-			
-		for (auto idx = nums.begin(); idx < nums.end()-2; idx++) {	
-			
-			if (idx == nums.begin() || *idx > *(idx-1)) {
-				auto left = idx + 1;
-				auto right = nums.end() - 1;
-			
-				while (left < right) {
-			
-					if (*idx + *left + *right == target) {
-						res.push_back({*idx, *left, *right});
-						left++;
-						right--;
-						while (left < right && *left == *(left-1)) left++;
-						while (left < right && *right == *(right+1)) right--;
-					}
-					
-					else if (*idx + *left + *right < target) {
-						while (left < right) {
-							left++;
-							if (*left > *(left-1)) break;							
-						}
-					}
-					
-					else {
-						while (left < right) {
-							right--;
-							if (*right < *(right+1)) break;	
-						}
-					}
-				}	
-			}		
-		}
+		    sort(nums.begin(), nums.end());
+		    const int target = 0;
+
+		    for (auto idx = nums.begin(); idx < nums.end()-2; idx++) {
+
+			      if (idx == nums.begin() || *idx > *(idx-1)) {
+				        auto left = idx + 1;
+				        auto right = nums.end() - 1;
+
+				        while (left < right) {
+
+					          if (*idx + *left + *right == target) {
+						            res.push_back({*idx, *left, *right});
+						            left++;
+						            right--;
+						            while (left < right && *left == *(left-1)) left++;
+						            while (left < right && *right == *(right+1)) right--;
+					          }
+
+					          else if (*idx + *left + *right < target) {
+						            while (left < right) {
+							              left++;
+							              if (*left > *(left-1)) break;
+						            }
+					          }
+
+					          else {
+						            while (left < right) {
+							              right--;
+							              if (*right < *(right+1)) break;
+						            }
+					          }
+				        }
+			      }
+		    }
 		return res;
     }
 };
